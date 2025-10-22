@@ -29,8 +29,8 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 3. Mobile View
 
-<img width="501" height="767" alt="Screenshot 2025-10-22 at 2 39 45 PM" src="https://github.com/user-attachments/assets/1d8de5fb-9675-411a-b48b-99bef5feceb1" />
-<img width="501" height="767" alt="Screenshot 2025-10-22 at 2 39 40 PM" src="https://github.com/user-attachments/assets/10c4970f-d952-4a51-97f6-9306be6ad6a8" />
+<img width="300" height="767" alt="Screenshot 2025-10-22 at 2 39 45 PM" src="https://github.com/user-attachments/assets/1d8de5fb-9675-411a-b48b-99bef5feceb1" />
+<img width="300" height="767" alt="Screenshot 2025-10-22 at 2 39 40 PM" src="https://github.com/user-attachments/assets/10c4970f-d952-4a51-97f6-9306be6ad6a8" />
 
 
 
