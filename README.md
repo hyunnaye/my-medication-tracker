@@ -20,15 +20,18 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 Progress Bar changes colour from each status
 
-<img width="1436" height="787" alt="Screenshot 2025-10-22 at 2 12 05 PM" src="https://github.com/user-attachments/assets/c3dd5a91-0071-4fe0-ae4d-91bf124b86aa" />
+<img width="1436" height="787" alt="Screenshot 2025-10-22 at 2 26 20 PM" src="https://github.com/user-attachments/assets/1a38cb0d-d788-4310-8166-506b408f6eb0" />
 
 
-<img width="1436" height="787" alt="Screenshot 2025-10-22 at 2 12 13 PM" src="https://github.com/user-attachments/assets/d6824d39-5020-4524-996a-810c9ed129af" />
+<img width="1436" height="787" alt="Screenshot 2025-10-22 at 2 27 12 PM" src="https://github.com/user-attachments/assets/ca51d697-6f8d-4f72-bd0f-919dac951ba8" />
 
-<img width="1436" height="787" alt="Screenshot 2025-10-22 at 2 11 53 PM" src="https://github.com/user-attachments/assets/390ab5df-dc0f-4dcc-8a8d-dd60b0b0878d" />
+<img width="1436" height="787" alt="Screenshot 2025-10-22 at 2 26 32 PM" src="https://github.com/user-attachments/assets/c3cedd41-a3e7-4a39-aaa0-efbc1be04ed6" />
+
+
 
 Edit Medication Dialog
-<img width="1436" height="787" alt="Screenshot 2025-10-22 at 2 12 24 PM" src="https://github.com/user-attachments/assets/27c3f843-1fb3-4de5-b393-2303fe1209b4" />
+<img width="1436" height="787" alt="Screenshot 2025-10-22 at 2 27 21 PM" src="https://github.com/user-attachments/assets/090bbf49-5b24-4d2f-936e-b10ded42d579" />
+
 
 
 
