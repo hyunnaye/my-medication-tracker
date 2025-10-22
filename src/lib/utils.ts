@@ -14,12 +14,14 @@ export function getDaysLeft(refillDate: string, countOverdue: boolean): number {
     return daysLeft > 0 ? daysLeft : 0;
 }
 
-export function getRefillAlert(refillDate: string): "on-track" | "low" | "overdue" {
+export function getRefillAlert(refillDate: string): "on-track" | "low" | "overdue" | "refill-day" {
     const daysLeft = getDaysLeft(refillDate, true);
     if (daysLeft > 7) {
         return "on-track";
-    } else if (daysLeft < 7 && daysLeft > 0) {
+    } else if (daysLeft <= 7 && daysLeft > 0) {
         return "low";
+    } else if (daysLeft === 0) {
+        return "refill-day"
     } else {
         return "overdue";
     }

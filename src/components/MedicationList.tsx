@@ -20,7 +20,7 @@ export default function MedicationList({ medications, adherences, editMedication
       </p>
     );
   }
-  function getProgressBar(progressPercent: number, status: "on-track" | "low" | "overdue", daysLeft: number) {
+  function getProgressBar(progressPercent: number, status: "on-track" | "low" | "overdue" | "refill-day", daysLeft: number) {
     let progressBarColour = ""
     let alertBadgeColor = ""
     let text = "";
@@ -41,6 +41,11 @@ export default function MedicationList({ medications, adherences, editMedication
         alertBadgeColor = "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300"
         text = `Overdue! Refill is ${daysLeft} days late`
         break;
+      case "refill-day":
+        progressBarColour = "bg-green-500"
+        alertBadgeColor = "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300"
+        text = `Today is your refill day!`
+        break;
       default:
         progressBarColour = "bg-gray-500"
     }
@@ -57,7 +62,7 @@ export default function MedicationList({ medications, adherences, editMedication
         </div>
         <div className="flex justify-center mt-2">
           <p
-            className={"inline-block text-center text-xs font-medium px-2.5 py-0.5 rounded-sm " + alertBadgeColor}
+            className={"inline-block text-center text-m font-medium px-2.5 py-0.5 rounded-sm " + alertBadgeColor}
           >
             {text}
           </p>
