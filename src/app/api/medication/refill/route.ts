@@ -8,22 +8,23 @@ function getRefillNeededMedications(days: number): Medication[] {
 
   console.log(medications);
   const filteredMeds = medications.filter((medication) => {
-      const refillDate = new Date(getRefillDate(medication.startDate, medication.supply));
-      return (Math.ceil(refillDate.getTime() - now.getTime())) / fullDay <= days;
+    const refillDate = new Date(getRefillDate(medication.startDate, medication.supply));
+    return (Math.ceil(refillDate.getTime() - now.getTime())) / fullDay <= days;
   })
 
   return filteredMeds.map(medication => (
-      { ...medication, refillDate: getRefillDate(medication.startDate, medication.supply)
-      }));
+    {
+      ...medication, refillDate: getRefillDate(medication.startDate, medication.supply)
+    }));
 }
 
 export async function GET() {
   try {
-      const refillsDue = getRefillNeededMedications(7);
-      return NextResponse.json(refillsDue, { status: 201 });
-    } catch (error) {
-      console.log(error)
-      return NextResponse.json({ error: 'Invalid request' }, { status: 400 });
-    }
+    const refillsDue = getRefillNeededMedications(7);
+    return NextResponse.json(refillsDue, { status: 201 });
+  } catch (error) {
+    console.log(error)
+    return NextResponse.json({ error: 'Invalid request' }, { status: 400 });
+  }
 
 }

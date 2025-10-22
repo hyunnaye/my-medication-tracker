@@ -14,8 +14,8 @@ export async function POST(request: Request) {
       name: name,
       dosage: dosage,
       frequency: frequency,
-      startDate: startDate, 
-      quantity: quantity, 
+      startDate: startDate,
+      quantity: quantity,
       supply: supply,
       refillDate: refillDate
     };
@@ -32,17 +32,17 @@ export async function POST(request: Request) {
 
 export async function DELETE(request: Request) {
   try {
-    const idJson  = await request.json(); 
+    const idJson = await request.json();
     const id = idJson.medId;
 
-    const i = medications.findIndex( (med) => med.id === id)
+    const i = medications.findIndex((med) => med.id === id)
     if (i === -1) {
       return NextResponse.json({ error: 'Medication not found' }, { status: 404 });
     }
 
     medications.splice(i, 1);
-    return NextResponse.json(medications, {status: 201});
-    
+    return NextResponse.json(medications, { status: 201 });
+
   } catch (error) {
     console.log(error)
     return NextResponse.json({ error: 'Invalid request' }, { status: 400 });
@@ -51,9 +51,9 @@ export async function DELETE(request: Request) {
 
 export async function PATCH(request: Request) {
   try {
-    const {id, updates} = await request.json();
+    const { id, updates } = await request.json();
 
-    const i = medications.findIndex( (med) => med.id === id)
+    const i = medications.findIndex((med) => med.id === id)
     if (i === -1) {
       return NextResponse.json({ error: 'Medication not found' }, { status: 404 });
     }

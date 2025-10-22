@@ -10,41 +10,59 @@ interface MedicationListProps {
   deleteMedication: (medID: string) => void;
   incrementAdherence: (medID: string, action: "taken" | "missed") => void;
 }
-    
+
 export default function MedicationList({ medications, adherences, editMedication, deleteMedication, incrementAdherence }: MedicationListProps) {
 
   function medicationLabels(label: string, value: string) {
     return (
-        <p className="text-sm text-gray-500">
-          <span className="font-semibold">{label}: </span>{value}
-        </p>
+      <p className="text-sm text-gray-500">
+        <span className="font-semibold">{label}: </span>{value}
+      </p>
     );
   }
-  function getStatusBadge(status: "on-track" | "low" | "overdue", daysLeft: number) {
-    let colorClasses = "";
+  function getProgressBar(progressPercent: number, status: "on-track" | "low" | "overdue", daysLeft: number) {
+    let progressBarColour = ""
+    let alertBadgeColor = ""
     let text = "";
 
     switch (status) {
       case "on-track":
-        text = "On Track"
-        colorClasses = "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300";
+        progressBarColour = "bg-green-500"
+        alertBadgeColor = "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300"
+        text = `On Track! ${daysLeft} days left`
         break;
       case "low":
+        progressBarColour = "bg-yellow-300"
+        alertBadgeColor = "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300"
         text = `Running Low! Refill in ${daysLeft} days`
-        colorClasses = "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300";
         break;
       case "overdue":
+        progressBarColour = "bg-red-500"
+        alertBadgeColor = "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300"
         text = `Overdue! Refill is ${daysLeft} days late`
-        colorClasses = "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300";
         break;
       default:
-        colorClasses = "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300";
+        progressBarColour = "bg-gray-500"
     }
-  
-    return ( 
-      <span className={"text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm " + colorClasses}>
-        {text}
-      </span>
+
+    return (
+      <div>
+        <div className="mt-4">
+          <div className={`relative w-full h-2.5 bg-gray-200 rounded-full overflow-hidden`}>
+            <div
+              className={"absolute left-0 top-0 h-full transition-all duration-500 " + progressBarColour}
+              style={{ width: `${100 - progressPercent}%` }}
+            ></div>
+          </div>
+        </div>
+        <div className="flex justify-center mt-2">
+          <p
+            className={"inline-block text-center text-xs font-medium px-2.5 py-0.5 rounded-sm " + alertBadgeColor}
+          >
+            {text}
+          </p>
+        </div>
+      </div>
     );
   }
 
@@ -60,7 +78,7 @@ export default function MedicationList({ medications, adherences, editMedication
   return (
     <>
       {medications.length === 0 ? (
-        <div className="w-full text-center p-8 bg-white dark:bg-gray-900 shadow-sm border border-gray-100 dark:border-gray-800  rounded-2xl shadow-sm">
+        <div className="w-full text-center p-8 bg-gradient-to-r from-slate-50 to-slate-100 shadow-sm border border-gray-100 dark:border-gray-800  rounded-2xl shadow-sm">
           <p className="text-gray-800 font-semibold text-lg">No medications yet</p>
           <p className="text-sm text-gray-500 mt-1">
             Add one above to start tracking your refills and adherence.
@@ -83,14 +101,13 @@ export default function MedicationList({ medications, adherences, editMedication
                   <div className="space-y-1">
                     <p className="font-semibold text-lg flex items-center gap-2">
                       {med.name}
-                      {getStatusBadge(getRefillAlert(med.refillDate), Math.abs(getDaysLeft(med.refillDate, true)))}
                     </p>
                     {medicationLabels("Dosage", med.dosage)}
                     {medicationLabels("Frequency", med.frequency)}
                     {medicationLabels("Start Date", med.startDate)}
                     {medicationLabels("Quantity", med.quantity)}
                     {medicationLabels("Days Left", daysLeft.toString())}
-                    {medicationLabels("Refill Date",med.refillDate)}
+                    {medicationLabels("Refill Date", med.refillDate)}
                   </div>
                   <div className="flex flex-col items-end gap-2 text-sm">
                     <button
@@ -122,16 +139,8 @@ export default function MedicationList({ medications, adherences, editMedication
                     </p>
                   </div>
                 </div>
-  
-                <div className="mt-4">
-                  <div className="relative w-full h-2.5 bg-gray-200 rounded-full overflow-hidden">
-                    <div
-                      className="absolute left-0 top-0 h-full bg-green-500 transition-all duration-500"
-                      style={{ width: `${100 - progressPercent}%` }}
-                    ></div>
-                  </div>
-                  <p className="text-center text-xs text-gray-500 mt-2">{`${daysLeft} days left`}</p>
-                </div>
+
+                {getProgressBar(progressPercent, getRefillAlert(med.refillDate), Math.abs(getDaysLeft(med.refillDate, true)))}
               </li>
             );
           })}

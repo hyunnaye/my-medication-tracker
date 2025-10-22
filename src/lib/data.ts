@@ -3,8 +3,8 @@ export interface Medication {
     name: string;
     dosage: string;
     frequency: string;
-    startDate: string; 
-    quantity: string; 
+    startDate: string;
+    quantity: string;
     supply: string;
     refillDate: string;
 };

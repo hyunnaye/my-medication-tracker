@@ -26,7 +26,7 @@ export default function Home() {
   }, []);
 
 
-    async function addAdherence(medicationID: string) {
+  async function addAdherence(medicationID: string) {
     const res = await fetch('/api/medication/adherence', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -36,22 +36,22 @@ export default function Home() {
       const err = await res.json();
       alert(`Error: ${err.error}`);
       return;
-    } 
+    }
     setAdherences(await res.json());
   }
 
-    async function deleteAdherence(medicationID: string) {
+  async function deleteAdherence(medicationID: string) {
     const res = await fetch('/api/medication/adherence', {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ medicationID }),
     });
-    
+
     if (!res.ok) {
       const err = await res.json();
       alert(`Error: ${err.error}`);
       return;
-    } 
+    }
     setAdherences(await res.json());
   }
 
@@ -59,13 +59,13 @@ export default function Home() {
     const res = await fetch('/api/medication/adherence', {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({medicationID, adherence})
+      body: JSON.stringify({ medicationID, adherence })
     });
     if (!res.ok) {
       const err = await res.json();
       alert(`Error: ${err.error}`);
       return;
-    } 
+    }
     const updatedAdherence = await res.json();
     setAdherences(adherences.map((adherence) => adherence.medicationID === updatedAdherence.medicationID ? updatedAdherence : adherence));
   }
@@ -79,7 +79,7 @@ export default function Home() {
   const handleEditChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEditedMedication({ ...editedMedication, [e.target.name]: e.target.value });
   };
-  
+
 
   async function deleteMedication(medId: string) {
     const res = await fetch('/api/medication', {
@@ -100,28 +100,28 @@ export default function Home() {
 
   async function editMedication() {
     let res;
-    if (editedMedication.supply || editedMedication.startDate){
+    if (editedMedication.supply || editedMedication.startDate) {
       const newRefillDate = getRefillDate(editedMedication.startDate, editedMedication.supply);
       res = await fetch('/api/medication', {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: editedMedication.id, updates: { ...editedMedication, refillDate: newRefillDate }}),
+        body: JSON.stringify({ id: editedMedication.id, updates: { ...editedMedication, refillDate: newRefillDate } }),
       });
     } else {
       res = await fetch('/api/medication', {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: editedMedication.id, updates: editedMedication}),
+        body: JSON.stringify({ id: editedMedication.id, updates: editedMedication }),
       });
-    } 
+    }
     if (!res.ok) {
       const err = await res.json();
       alert(`Error: ${err.error}`);
       return;
     }
-    
+
     const updatedMedication = await res.json();
-    setMedications( medications.map((med) => med.id === updatedMedication.id ? updatedMedication : med));
+    setMedications(medications.map((med) => med.id === updatedMedication.id ? updatedMedication : med));
     setIsEditDialogOpen(false);
   }
 

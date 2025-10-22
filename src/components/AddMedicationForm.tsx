@@ -17,7 +17,7 @@ export default function AddMedicationForm({ onAdd, addAdherence }: AddMedication
   const [quantity, setQuantity] = useState('');
   const [supply, setSupply] = useState('');
 
-  function resetForm(){
+  function resetForm() {
     setName('');
     setDosage('');
     setFrequency('');
@@ -34,7 +34,7 @@ export default function AddMedicationForm({ onAdd, addAdherence }: AddMedication
     const res = await fetch('/api/medication', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, dosage, frequency, startDate, quantity, supply, refillDate}),
+      body: JSON.stringify({ name, dosage, frequency, startDate, quantity, supply, refillDate }),
     });
 
     if (!res.ok) {
@@ -57,7 +57,7 @@ export default function AddMedicationForm({ onAdd, addAdherence }: AddMedication
       <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">
         Add New Medication
       </h2>
-  
+
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <input
           value={name}
@@ -66,7 +66,7 @@ export default function AddMedicationForm({ onAdd, addAdherence }: AddMedication
           required
           className="border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 p-2.5 rounded-lg w-full focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
         />
-  
+
         <input
           value={dosage}
           onChange={(e) => setDosage(e.target.value)}
@@ -74,7 +74,7 @@ export default function AddMedicationForm({ onAdd, addAdherence }: AddMedication
           required
           className="border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 p-2.5 rounded-lg w-full focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
         />
-  
+
         <input
           value={frequency}
           onChange={(e) => setFrequency(e.target.value)}
@@ -82,7 +82,7 @@ export default function AddMedicationForm({ onAdd, addAdherence }: AddMedication
           required
           className="border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 p-2.5 rounded-lg w-full focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
         />
-  
+
         <input
           value={startDate}
           type="date"
@@ -90,7 +90,7 @@ export default function AddMedicationForm({ onAdd, addAdherence }: AddMedication
           required
           className="border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 p-2.5 rounded-lg w-full focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
         />
-  
+
         <input
           value={quantity}
           type="number"
@@ -100,7 +100,7 @@ export default function AddMedicationForm({ onAdd, addAdherence }: AddMedication
           required
           className="border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 p-2.5 rounded-lg w-full focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
         />
-  
+
         <input
           value={supply}
           type="number"
@@ -111,7 +111,7 @@ export default function AddMedicationForm({ onAdd, addAdherence }: AddMedication
           className="border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 p-2.5 rounded-lg w-full focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
         />
       </div>
-  
+
       <button
         type="submit"
         className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg font-medium shadow-sm transition focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800"
@@ -120,5 +120,5 @@ export default function AddMedicationForm({ onAdd, addAdherence }: AddMedication
       </button>
     </form>
   );
-  
+
 }
