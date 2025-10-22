@@ -60,7 +60,7 @@ export default function MedicationList({ medications, adherences, editMedication
   return (
     <>
       {medications.length === 0 ? (
-        <div className="w-full text-center p-8 bg-gradient-to-br from-yellow-50 to-yellow-100 border border-yellow-200 rounded-2xl shadow-sm">
+        <div className="w-full text-center p-8 bg-white dark:bg-gray-900 shadow-sm border border-gray-100 dark:border-gray-800  rounded-2xl shadow-sm">
           <p className="text-gray-800 font-semibold text-lg">No medications yet</p>
           <p className="text-sm text-gray-500 mt-1">
             Add one above to start tracking your refills and adherence.
