@@ -66,7 +66,7 @@ export default function AddMedicationDialog({ onAdd, isOpen, onClose, addAdheren
           className="space-y-4  bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800"
         >
         <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4 text-center">
-          💊 Edit Medication
+          💊 Add a New Medication
         </h3>
 
           <div className="space-y-4">
