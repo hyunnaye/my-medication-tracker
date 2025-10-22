@@ -20,7 +20,7 @@ export default function EditMedicationDialog({ editedMedication, isOpen, onClose
 
         <div className="space-y-3">
           <div>
-            <label className="text-sm text-gray-600 dark:text-gray-400">Name</label>
+            <label htmlFor="name" className="text-sm text-gray-600 dark:text-gray-400">Name</label>
             <input
               name="name"
               value={editedMedication?.name || ""}
@@ -31,7 +31,7 @@ export default function EditMedicationDialog({ editedMedication, isOpen, onClose
           </div>
 
           <div>
-            <label className="text-sm text-gray-600 dark:text-gray-400">Dosage</label>
+            <label htmlFor="dosage" className="text-sm text-gray-600 dark:text-gray-400">Dosage</label>
             <input
               name="dosage"
               value={editedMedication?.dosage || ""}
@@ -42,7 +42,7 @@ export default function EditMedicationDialog({ editedMedication, isOpen, onClose
           </div>
 
           <div>
-            <label className="text-sm text-gray-600 dark:text-gray-400">Frequency</label>
+            <label htmlFor="frequency" className="text-sm text-gray-600 dark:text-gray-400">Frequency</label>
             <input
               name="frequency"
               value={editedMedication?.frequency || ""}
@@ -53,7 +53,7 @@ export default function EditMedicationDialog({ editedMedication, isOpen, onClose
           </div>
 
           <div>
-            <label className="text-sm text-gray-600 dark:text-gray-400">Start Date</label>
+            <label htmlFor="startDate" className="text-sm text-gray-600 dark:text-gray-400">Start Date</label>
             <input
               name="startDate"
               type="date"
@@ -65,10 +65,11 @@ export default function EditMedicationDialog({ editedMedication, isOpen, onClose
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="text-sm text-gray-600 dark:text-gray-400">Total Quantity</label>
+              <label htmlFor="quantity" className="text-sm text-gray-600 dark:text-gray-400">Total Quantity</label>
               <input
                 name="quantity"
                 type="number"
+                min="0"
                 value={editedMedication?.quantity || ""}
                 onChange={onChange}
                 placeholder="Quantity"
@@ -77,10 +78,11 @@ export default function EditMedicationDialog({ editedMedication, isOpen, onClose
             </div>
 
             <div>
-              <label className="text-sm text-gray-600 dark:text-gray-400">Days Supply</label>
+              <label htmlFor="supply" className="text-sm text-gray-600 dark:text-gray-400">Days Supply</label>
               <input
                 name="supply"
                 type="number"
+                min="0"
                 value={editedMedication?.supply || ""}
                 onChange={onChange}
                 placeholder="Days Supply"
@@ -99,7 +101,7 @@ export default function EditMedicationDialog({ editedMedication, isOpen, onClose
           </button>
           <button
             onClick={onSave}
-            className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium shadow-sm transition focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800"
+            className="px-4 py-2 rounded-lg bg-blue-500 hover:bg-blue-700 text-white font-medium shadow-sm transition focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800"
           >
             Save Changes
           </button>

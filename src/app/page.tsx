@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { Adherence, Medication } from '@/lib/data';
 import { getRefillDate } from '@/lib/utils';
-import AddMedicationForm from '@/components/AddMedicationForm';
+import AddMedicationDialog from '@/components/AddMedicationDialog';
 import MedicationList from '@/components/MedicationList';
 import EditMedicationDialog from '@/components/EditMedicationDialog';
 
@@ -11,6 +11,7 @@ export default function Home() {
   const [medications, setMedications] = useState<Medication[]>([]);
   const [adherences, setAdherences] = useState<Adherence[]>([]);
   const [editedMedication, setEditedMedication] = useState<any>(null);
+  const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
 
   useEffect(() => {
@@ -70,7 +71,6 @@ export default function Home() {
     setAdherences(adherences.map((adherence) => adherence.medicationID === updatedAdherence.medicationID ? updatedAdherence : adherence));
   }
 
-
   const openEditDialog = (med: Medication) => {
     setEditedMedication(med);
     setIsEditDialogOpen(true);
@@ -127,9 +127,22 @@ export default function Home() {
 
   return (
     <div className="p-8">
-      <h1 className="text-2xl font-semibold mb-4">My Medications</h1>
+      <div className="flex items-center justify-between mb-6">
+        <h1 className="text-2xl font-semibold mb-4">My Medications</h1>
+        <button
+          onClick={() => setIsAddDialogOpen(true)}
+          className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+        >
+          Add Medication
+        </button>
+      </div>
 
-      <AddMedicationForm onAdd={(newMed) => setMedications((prev) => [...prev, newMed])} addAdherence={addAdherence} />
+      <AddMedicationDialog
+        onAdd={(newMed) => setMedications((prev) => [...prev, newMed])}
+        onClose={() => setIsAddDialogOpen(false)}
+        isOpen={isAddDialogOpen}
+        addAdherence={addAdherence}
+      />
 
       <MedicationList
         medications={medications}

@@ -90,7 +90,7 @@ export default function MedicationList({ medications, adherences, editMedication
           </p>
         </div>
       ) : (
-        <ul className="space-y-4">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
           {medications.map((med) => {
             const daysLeft = getDaysLeft(med.refillDate, false);
             const progressPercent = Math.max(
