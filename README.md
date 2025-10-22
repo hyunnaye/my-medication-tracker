@@ -18,7 +18,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 1. Progress Bar changes colour from each status
 
-<img width="1440" height="815" alt="Screenshot 2025-10-22 at 4 12 11 PM" src="https://github.com/user-attachments/assets/48dfefb0-3bf3-4f4f-a773-ebad3b9339b7" />
+<img width="1421" height="808" alt="Screenshot 2025-10-22 at 4 30 39 PM" src="https://github.com/user-attachments/assets/2d9d05b6-2435-4867-a466-432059ed7b08" />
 
 
 2. Add Medication Dialog
