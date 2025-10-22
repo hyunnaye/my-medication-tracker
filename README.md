@@ -22,7 +22,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 
 2. Add Medication Dialog
-<img width="1440" height="815" alt="Screenshot 2025-10-22 at 4 13 37 PM" src="https://github.com/user-attachments/assets/4f544783-45d9-484e-8798-1fb27879eb36" />
+<img width="1421" height="808" alt="Screenshot 2025-10-22 at 4 18 14 PM" src="https://github.com/user-attachments/assets/12c53419-2835-4756-bd00-15d046a831c0" />
 
 3. Edit Medication Dialog
 <img width="1440" height="815" alt="Screenshot 2025-10-22 at 4 13 32 PM" src="https://github.com/user-attachments/assets/03787fc7-0092-4331-a453-a29a0a30258b" />
